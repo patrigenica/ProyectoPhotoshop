@@ -59,6 +59,15 @@
        return 0; /*incorrecto*/
   } 
 
+  function validar_contrasena($email, $contraseña)
+    {  
+    //NO coinciden email y su contraseña  
+    if($email != $contraseña)  
+        return false;  
+    else  
+        return true;  
+    }  
+
   function validar_fecha($fecha) /* COMPRUEBA LA FECHA CON EL CALENDARIO para el formato dd/mm/aaaa y aaaa/mm/dd*/
    {
 
@@ -184,7 +193,7 @@
   $fundir= $_GET["fundir"];
 
   if(isset($nombre) && isset($apellido) && isset($telefono) && comprobar_telefono($telefono) && isset($usuario) && isset($email) && comprobar_email($email) 
-    && isset($contraseña) && isset($preguntaseguridad) && isset($respuesta) && isset($usuariofacebook) /*con la opción isset comprobamos que hay datos dentro de la casilla nombre. Con lo cual no hace falta ponerlo en la función de validar*/
+    && isset($contraseña) && validar_contrasena($email, $contraseña) && isset($preguntaseguridad) && isset($respuesta) && isset($usuariofacebook) /*con la opción isset comprobamos que hay datos dentro de la casilla nombre. Con lo cual no hace falta ponerlo en la función de validar*/
     && isset($usuariotwitter) && isset($fecha) && validar_fecha($fecha) && isset($sexo) && isset($profesion) && isset($provincia)
     && isset($estudios) && isset($certificado1) && isset($nivel1) && isset($familiaprof1) 
     && isset($certificado2) && isset($nivel2) && isset($familiaprof2)&& isset($certificado3) && isset($nivel3) && isset($familiaprof3)

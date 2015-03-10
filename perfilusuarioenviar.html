@@ -19,19 +19,33 @@
   function validar()
   {
 
-    return true; /* solo para comproba el pho. Quitar u ocultar cuando lo vayamos a enviar*/
+    //return true; /* solo para comproba el php. Quitar u ocultar cuando lo vayamos a enviar*/
 
     //comprobar que existe el nombre
     var nombre = document.getElementById("nombre").value;
     if(nombre == null || nombre.length<=0) //no cumple
-    {
     return false;
-    }
+
+
     //comprobar que existe el apellido
     var apellido = document.getElementById("apellido").value;
     if(apellido == null || apellido.length<=0) //no cumple
     return false;
 
+    var telefono = document.getElementById("telefono").value;
+    var expregmail =/^((\+?34([ \t|\-])?)?[9|6|7]((\d{1}([ \t|\-])?[0-9]{3})|(\d{2}([ \t|\-])?[0-9]{2}))([ \t|\-])?[0-9]{2}([ \t|\-])?[0-9]{2})$/;//comprobar que el telefono empiece por 6,7 o 9 y tenga 8 digitos mas, comprobamos que es un teléfono de España con los formatos siguientes con posibilidad de capturar espacios o guiones como separación: +34 9XX XX XX XX 9XX XX XX XX 6XX XX XX XX 7XX-XX-XX-XX 6XXXXXXXX.
+
+    if(!expregmail.test(telefono))      
+    return false;
+
+
+    var correoelectronico = document.getElementById("correoelectronico").value;
+    var expregmail =/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$/;//comprobar que el email=aaa@aaa.aa
+
+    if(!expregmail.test(correoelectronico))      
+    return false;
+        
+        
     var dia, mes, anyo, fecha;//PARA VALIDAR LA FECHA
     var d;
 
@@ -192,10 +206,10 @@
 			<legend> <b> Perfil Usuario </b> </legend>
 			<p>Nombre <input type="text" id="nombre" name="nombre" value="" maxlength="25"/ required="required"></p>
 			<p>Apellido <input type="text" id="apellido" name="apellido" value="" maxlength="" required="required"/></p>
-			<p>Teléfono <input type="text" name="telefono" value="" maxlength="12" placeholder="911111111 ó 611 11 11 11"required="required" size="20"/></p>
+			<p>Teléfono <input type="text" name="telefono" value="" id="telefono" maxlength="12" required="required" placeholder="Ej. 6,7 ó 911111111"required="required" size="20"/></p>
 			<p>Nombre usuario <input type="text" name="nombreusuario" value="" maxlength="25"/></p>
-			<p>Correo electrónico <input type="text" name="correoelectronico" value="" size="25" maxlength="25"/></p>
-			<p>Contraseña <input type="password" name="contraseña" value="" maxlength="25"/></p>
+			<p>Correo electrónico <input type="text" id="correoelectronico" name="correoelectronico" placeholder="Ejemplo@aaa.aa" value="" size="25" maxlength="25" required="required"/></p>
+			<p>Contraseña <input type="password" name="contraseña" value="" maxlength="25" required="required"/></p>
 			<p> <label for="preguntaseguridad">Pregunta de seguridad </label> <select name="preguntadeseguridad" id="preguntadeseguridad"> <option value="" selected="selected"> -seleccionar-</option>
 				 <optgroup label="">
        				<option value="Comida favorita">Nombre del padre</option>
@@ -219,7 +233,7 @@
 		<fieldset>
 			<legend> Datos complementarios </legend>
 			<p> Fecha nacimiento <input type="date" id="fecha" name="fechanacimiento" step="1" min="01/01/1940" max="31/12/2014" value="" placeholder="dd/mm/aaaa" required="required"/> </p>
-			<p> Sexo: <input type="radio" name="sexo" value="masculino" /> Masculino <input type="radio" name="sexo" value="femenino"/> Femenino </p>
+			<p> Sexo: <input type="radio" name="sexo" value="masculino" required="required"/> Masculino <input type="radio" name="sexo" value="femenino"/> Femenino </p>
 
 			<p> <label for="profesión">Profesión </label> <select name="profesion" id="profesión"/> <option value="" selected="selected"> -seleccionar-</option>
 				 <optgroup label="">

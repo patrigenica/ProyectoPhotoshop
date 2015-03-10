@@ -18,7 +18,29 @@
 	{
 
 		/*return true; /* solo para comproba el pho. Quitar u ocultar cuando lo vayamos a enviar*/
-   	
+   		
+		var correoelectronico = document.getElementById("correoelectronico").value;
+    	var expregmail =/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$/;//comprobar que el email=aaa@aaa.aa
+
+    	if(!expregmail.test(correoelectronico)) 		    
+    	return false;
+
+    	var correoelectronico = document.getElementById("correoelectronico").value;
+    	var confirmarcorreo = document.getElementById("confirmarcorreo").value;
+    	 if(correoelectronico!=confirmarcorreo)  //comprobamos que el texto es igual en correo y en su confirmación
+        	return false; 
+
+        var contraseña = document.getElementById("contraseña").value;
+    	var confirmarcontraseña = document.getElementById("confirmarcontraseña").value;
+    	 if(contraseña!=confirmarcontraseña)  //comprobamos que el texto es igual en contraseña y en su confirmación
+        	return false; 
+        	
+        var respuesta = document.getElementById("respuesta").value;
+    	var repiterespuesta = document.getElementById("repiterespuesta").value;
+    	 if(respuesta!=repiterespuesta)  //comprobamos que el texto es igual en respuesta y en su confirmación
+        	return false; 		 
+   
+
 		//comprobar que existe el nombre
 		var nombre = document.getElementById("nombre").value;
 		if(nombre == null || nombre.length<=0) //no cumple
@@ -187,11 +209,11 @@
 		<fieldset>
 
 			<legend>Datos Usuario <span id="obligatorio">(Todos los campos son obligatorios)</span></legend>
-			<p>Nombre usuario <input type="text" name="nombreusuario" value="" maxlength="25"/></p>
-			<p>Correo electrónico <input type="text" name="correoelectronico" value="" size="25" maxlength="25" required="required"/></p>
-			<p>Confirmar correo electrónico <input type="password" name="confirmarcorreo" value="" size="25" maxlength="25" required="required"/></p>
-			<p>Contraseña <input type="text" name="contraseña" value="" maxlength="25" required="contraseña"/></p>
-			<p>Confirmar contraseña <input type="password" name="confirmarcontraseña" value="" maxlength="25" required="required"/></p>
+			<p>Nombre usuario <input type="text" name="nombreusuario" value="" required="required" maxlength="25"/></p>
+			<p>Correo electrónico <input type="text" id="correoelectronico"name="correoelectronico" value="" size="25" maxlength="25" placeholder="Ejemplo@aaa.aa" required="required"/></p>
+			<p>Confirmar correo electrónico <input type="password" id="confirmarcorreo" name="confirmarcorreo" value="" size="25" maxlength="25" placeholder="Igual que el correo elec." required="required"/></p>
+			<p>Contraseña <input type="text" name="contraseña" id="contraseña" value="" maxlength="25" required="contraseña"/></p>
+			<p>Confirmar contraseña <input type="password" id="confirmarcontraseña" name="confirmarcontraseña" value="" maxlength="25" placeholder="Igual que la contraseña" required="required"/></p>
 			<p> <label for="pregunta seguridad">Pregunta de seguridad</label> <select name="preguntadeseguridad" id="preguntadeseguridad"> <option value="" selected="selected"> -seleccionar-</option>
 				 <optgroup label="">
        				<option value="Nombre del padre">Nombre del padre</option>
@@ -205,8 +227,8 @@
    				 </optgroup>
    				</select></p>
 
-			<p>Respuesta <input type="text" name="respuesta" value="" maxlength="25"/></p>
-			<p>Repite respuesta <input type="password" name="repiterespuesta" value="" maxlength="25"/></p>	
+			<p>Respuesta <input type="text" name="respuesta" id="respuesta" value="" maxlength="25"/></p>
+			<p>Repite respuesta <input type="password" placeholder="igual que respuesta" id="repiterespuesta" name="repiterespuesta" value="" maxlength="25"/></p>	
 		</fieldset>
 
 		<br>
@@ -215,7 +237,7 @@
 			<legend>Datos Personales <span id="obligatorio">(Todos los campos son obligatorios)</span></legend>
 			<p> Nombre <input type="text" id="nombre" name="nombre" value="" maxlength="25"  required="required"/>
 			<p> Apellido <input type="text" id="apellido" name="apellido" maxlength="25" value="" required="required"/></p>
-			<p> Fecha nacimiento <input type="date" id="fecha" name="fechanacimiento" step="1" min="01-01-1940" max="31-12-2014" value="" placeholder="01-01-2015" required="required"/> </p>
+			<p> Fecha nacimiento <input type="date" id="fecha" name="fechanacimiento" step="1" min="01-01-1940" max="31-12-2014" value="" placeholder="dd-mm-aaaa" required="required"/> </p>
 			<p> Sexo: <input type="radio" name="sexo" value="masculino" /> Masculino <input type="radio" name="sexo" value="femenino" required="required"/> Femenino </p>
 
 			<p> <label for="profesión">Profesión</label> <select name="profesion" id="profesión"required="profesión"> <option value="" selected="selected"> -seleccionar-</option>

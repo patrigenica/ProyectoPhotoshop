@@ -52,6 +52,33 @@ function comprobar_email($email)
        return 0; /*incorrecto*/
   } 
 
+  function validar_correo($email, $correoconfirmar)
+    {  
+    //comprobar que coinciden email y confirmar email  
+    if($email != $correoconfirmar)  
+        return false;  
+    else  
+        return true;  
+    } 
+
+    function validar_contrasena($contraseña, $contraseñaconfirmar)
+    {  
+    //comprobar que coinciden contraseña y confirmar contraseña  
+    if($contraseña != $contraseñaconfirmar)  
+        return false;  
+    else  
+        return true;  
+    }
+
+    function validar_respuesta($respuesta, $respuestarepite)
+    {  
+    //comprobar que coinciden respuesta y repiterespuesta 
+    if($respuesta != $respuestarepite)  
+        return false;  
+    else  
+        return true;  
+    }
+
   /*function validarEmail($email) TAMBIEN PODEMOS VALIDAR ASI EL MAIL, COMPRUEBA si usa el formato estándar.
     {
     return preg_match("#^(((( [a-z\d]  [\.\-\+_] ?)*) [a-z0-9] )+)\@(((( [a-z\d]  [\.\-_] ?){0,62}) [a-z\d] )+)\.( [a-z\d] {2,6})$#i", $email);
@@ -150,8 +177,8 @@ function comprobar_email($email)
 	$retoquecolor = $_POST["color"];
 	$retoqueimagen = $_POST["imagen"];
 
-	if(isset($usuario) && isset($email) && comprobar_email($email)  && isset($correoconfirmar) && isset($contraseña) && isset($contraseñaconfirmar)
-		&& isset($preguntaseguridad) && isset($respuesta) && isset($respuestarepite) && isset($nombre) /*con la opción isset comprobamos que hay datos dentro de la casilla nombre. Con lo cual no hace falta ponerlo en la función de validar*/
+	if(isset($usuario) && isset($email) && comprobar_email($email)  && isset($correoconfirmar) && validar_correo($email, $correoconfirmar) && isset($contraseña) && isset($contraseñaconfirmar)
+		&& validar_contrasena($contraseña, $contraseñaconfirmar) && isset($preguntaseguridad) && isset($respuesta) && isset($respuestarepite) && validar_respuesta($respuesta, $respuestarepite) && isset($nombre) /*con la opción isset comprobamos que hay datos dentro de la casilla nombre. Con lo cual no hace falta ponerlo en la función de validar*/
 		&& isset($apellido) && isset($fecha) && validar_fecha($fecha) && isset($sexo) && isset($profesion) && isset($provincia)
 		&& isset($retoquecolor) && isset($retoqueimagen))
 	{
